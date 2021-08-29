@@ -1,7 +1,6 @@
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
-# %matplotlib inline
 
 # used to supress display of warnings
 import warnings

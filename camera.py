@@ -7,7 +7,6 @@ from extract_faces import extract
 vid = cv2.VideoCapture(0)
 
 
-
 while(True):
 	
 	# Capture the video frame
