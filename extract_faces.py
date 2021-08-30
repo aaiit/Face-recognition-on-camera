@@ -41,7 +41,6 @@ def extract(image):
 	return images,image
 
 
-
 import sys
 import os
 
