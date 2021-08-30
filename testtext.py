@@ -12,9 +12,9 @@ while(True):
 	ret, new_frame = vid.read()
 
 
-	font = cv2.FONT_HERSHEY_SIMPLEX
+	# font = cv2.FONT_HERSHEY_SIMPLEX
 
-	cv2.putText(new_frame, name, (10,450), font, 3, (0, 255, 0), 2, cv2.LINE_AA)
+	# cv2.putText(new_frame, "Hamza", (10,450), font, 3, (0, 255, 0), 2, cv2.LINE_AA)
 	cv2.imshow('frame', new_frame)
 
 
