@@ -47,4 +47,4 @@ if len(sys.argv)==2 and sys.argv[1] == "run":
 		image_file = 'dataset_faces/'+i
 		im = cv2.imread(image_file)
 		tmp = extract(im)[0][0]
-		cv2.imwrite('cropped_dataset_faces/'+i,)
+		cv2.imwrite('cropped_dataset_faces/'+i,tmp)

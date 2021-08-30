@@ -14,11 +14,14 @@ while(True):
 	ret, frame = vid.read()
 
 	# Display the resulting frame
+	face,frame = extract(frame)
+	name = predict_frame(face[0])
+	font = cv2.FONT_HERSHEY_SIMPLEX
+
+	cv2.putText(frame, name, (10,450), font, 3, (0, 255, 0), 2, cv2.LINE_AA)
 	cv2.imshow('frame', frame)
 
-	face,frame = extract(frame)[0]
-	predict_frame(face[0])
-
+	
 	# the 'q' button is set as the
 	# quitting button you may use any
 	# desired button of your choice

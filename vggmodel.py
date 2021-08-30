@@ -182,4 +182,4 @@ def predict_frame(frame):
     embedding_vector = vgg_face_descriptor.predict(np.expand_dims(img, axis=0))[0]
     k = sorted([[distance(embeddings[i],embedding_vector),i]  for i in tqdm(range(len(metadata)))])[0][1]
     print("This face is most similar to this",metadata[k])
-
+    return metadata[k].split("/")[-1].split(".")[0]
