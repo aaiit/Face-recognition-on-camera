@@ -34,10 +34,17 @@ def extract(image):
 			images.append(image[startY:endY,startX:endX])
 	print("len faces :",len(images))
 	# print(images)
-	return images
+	return images,image
 
-# image_file = 'sample_image.jpg'
-# im = cv2.imread(image_file)
-# tmp = extract(im)
-# print(tmp)
-# print(len(tmp))
+
+
+import sys
+import os
+
+if len(sys.argv)==2 and sys.argv[1] == "run":
+	data = os.listdir('dataset_faces')
+	for i in data:
+		image_file = 'dataset_faces/'+i
+		im = cv2.imread(image_file)
+		tmp = extract(im)[0][0]
+		cv2.imwrite('cropped_dataset_faces/'+i,)

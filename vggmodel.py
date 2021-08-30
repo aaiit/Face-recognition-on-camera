@@ -114,8 +114,8 @@ print(embedding_vector.shape)
 
 
 from tqdm import tqdm
-metadata = os.listdir("dataset_faces/")
-metadata = np.array([ "dataset_faces/"+i for i in metadata])
+metadata = os.listdir("cropped_dataset_faces/")
+metadata = np.array([ "cropped_dataset_faces/"+i for i in metadata])
 total_images = len(metadata)
 
 print('total_images :', total_images)
