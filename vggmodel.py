@@ -184,9 +184,9 @@ def predict_frame(frame):
     k = sorted([[distance(embeddings[i],embedding_vector),i]  for i in tqdm(range(len(metadata)))])[0][1]
     print("This face is most similar to this",metadata[k])
 
-    # sequence.append(k)
-    # sequence = sequence[:10]
-    # x = sum(sequence)/len(sequence)
-    # k = sorted([[abs(x-i),i] for i in sequence])[0][1]
+    sequence.append(k)
+    sequence = sequence[:10]
+    x = sum(sequence)/len(sequence)
+    k = sorted([[abs(x-i),i] for i in sequence])[0][1]
 
     return metadata[k]#.split("/")[-1].split(".")[0]
