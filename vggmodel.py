@@ -1,8 +1,7 @@
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
-
-# used to supress display of warnings
+import sys
 import warnings
 
 
@@ -124,16 +123,26 @@ print('total_images :', total_images)
 
 print(metadata[0])
 
+import pickle
 
+"""
+py vggmodel.py run
+"""
+if len(sys.argv)==2 and sys.argv[1] == "run":
+    embeddings = np.zeros((metadata.shape[0], 2622))
+    for i, m in tqdm(list(enumerate(metadata))):
+        img_path = metadata[i]#.image_path()
+        img = load_image(img_path)
+        img = (img / 255.).astype(np.float32)
+        img = cv2.resize(img, dsize = (224,224))
+        embedding_vector = vgg_face_descriptor.predict(np.expand_dims(img, axis=0))[0]
+        embeddings[i]=embedding_vector # embedding_vector_vector
 
-embeddings = np.zeros((metadata.shape[0], 2622))
-for i, m in tqdm(list(enumerate(metadata))):
-    img_path = metadata[i]#.image_path()
-    img = load_image(img_path)
-    img = (img / 255.).astype(np.float32)
-    img = cv2.resize(img, dsize = (224,224))
-    embedding_vector = vgg_face_descriptor.predict(np.expand_dims(img, axis=0))[0]
-    embeddings[i]=embedding_vector # embedding_vector_vector
+    with open('embeddings.pickle', 'wb') as f:
+        pickle.dump([embeddings], f)
+else:
+    with open('embeddings.pickle', 'rb') as f:
+        embeddings = pickle.load(f)[0]
 
 
 def distance(emb1, emb2):

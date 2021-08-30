@@ -16,7 +16,7 @@ while(True):
 	# Display the resulting frame
 	cv2.imshow('frame', frame)
 
-	face = extract(frame)
+	face = extract(frame)[0]
 	predict_frame(face)
 
 	# the 'q' button is set as the
