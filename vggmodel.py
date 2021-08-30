@@ -175,6 +175,7 @@ def predict(img_path):
 # testing on new face
 predict("998.jpg")
 
+sequence = []
 
 def predict_frame(frame):
     img = (frame / 255.).astype(np.float32)
@@ -182,4 +183,10 @@ def predict_frame(frame):
     embedding_vector = vgg_face_descriptor.predict(np.expand_dims(img, axis=0))[0]
     k = sorted([[distance(embeddings[i],embedding_vector),i]  for i in tqdm(range(len(metadata)))])[0][1]
     print("This face is most similar to this",metadata[k])
-    return metadata[k].split("/")[-1].split(".")[0]
+
+    # sequence.append(k)
+    # sequence = sequence[:10]
+    # x = sum(sequence)/len(sequence)
+    # k = sorted([[abs(x-i),i] for i in sequence])[0][1]
+
+    return metadata[k]#.split("/")[-1].split(".")[0]
